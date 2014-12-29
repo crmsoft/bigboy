@@ -1,0 +1,61 @@
+.frm-btn-item-holder{
+    box-sizing: border-box;
+    height: 125px;
+    width: 125px;
+    border: 1px solid #DDDDDD;
+    margin-left: 25px;
+    float: left;
+    position: relative;
+}
+.frm-btn-item-holder:hover { border-color: #337ab7;
+    -webkit-box-shadow: 0px 0px 2px 1px #999999;
+    -moz-box-shadow: 0px 0px 2px 1px #999999;
+    box-shadow: 0px 0px 2px 1px #999999;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -kthtml-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+.frm-btn-item-holder:hover .core-icon-add{
+    background: #227ab7;
+    transition: all 0.2s linear;
+}
+
+    .frm-btn-item-holder .core-icon-add{ margin: 0; position: absolute; right: 0; background: #DDDDDD; color: #ffffff; }
+    .frm-btn-item-holder paper-item{ width: 100%; height: 100%; }
+    .frm-btn-item-holder .nav-main-content{ width: 100%; text-align: center; }
+        .frm-btn-item-holder .item-button-icon{ margin-top: 15px; }
+        .frm-btn-item-holder .frm-title{ width: 100%; margin-top: 5px; }
+
+core-overlay .content{ background: #ffffff; padding: 25px; min-width: 355px; }
+core-overlay .content .heading{ font-family: 'Open Sans', sans-serif; font-weight: 300 !important; font-size: 24px; margin: 0; }
+core-overlay .content .hr-top,.hr-bottom { border: 0;border-top: 1px solid #E0DFDF;border-bottom: 1px solid #FEFEFE; margin: 10px 0 10px; }
+core-overlay .content .radio-btn{ margin-left: 1px; color: #AAAAAA; padding-top: 25px; }
+core-overlay .content .radio-btn paper-toggle-button{ margin-right:  5px; }
+core-overlay .content .submit-btn{ background: rgba(92, 184, 92, 0.40); }
+core-overlay .content .cancel-btn{ background: rgba(49, 176, 213, 0.40); }
+                        paper-spinner {
+                            margin-left: 48%;
+                        }
+                        paper-spinner.blue::shadow .circle {
+                            border-color: #4285f4;
+                        }
+
+core-overlay .content select::-ms-expand{
+    display: none;
+}
+core-overlay .content select{
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                -ms-appearance: none;
+                                -o-appearance: none;
+                                appearance: none;
+                                width: 100%;
+                                background: #fff;
+                                color: #aaa;
+                                border: none;
+                                padding: 5px 5px 5px 0px;
+                                border-bottom: 1px solid #757575;
+                        }

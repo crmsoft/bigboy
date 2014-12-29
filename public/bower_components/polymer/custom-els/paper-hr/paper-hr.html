@@ -1,0 +1,18 @@
+<link rel="import" href='../../polymer.html'>
+<link rel="import" href='../../../paper-item/paper-item.html'>
+<polymer-element name="paper-hr" attributes="hrHeader">
+    <template>
+        <link rel="stylesheet" href="css.css"/>
+        <content>
+            <paper-item>
+                <h3>{{ hrHeader }}</h3>
+            </paper-item>
+            <hr/>
+        </content>
+    </template>
+    <script>
+        Polymer('paper-hr',{
+            ready: function() {  }
+        });
+    </script>
+</polymer-element>

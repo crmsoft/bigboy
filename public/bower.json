@@ -1,0 +1,23 @@
+{
+  "name": "public",
+  "version": "0.0.0",
+  "authors": [
+    "Akhtem <ahtem.crimea@ex.ua>"
+  ],
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "keywords": [
+    "nothing"
+  ],
+  "license": "MIT",
+  "homepage": "index.php",
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.2",
+    "paper-item": "Polymer/paper-item#~0.5.2"
+  }
+}

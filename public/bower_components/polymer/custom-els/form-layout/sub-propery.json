@@ -1,0 +1,10 @@
+{
+  "heading":"Adding New Sub Property",
+  "relatedTable":"T_SubProperty",
+  "inputs": [
+    { "name":"select", "type":"slcInput", "value":{ "table":"T_Property", "fields":["Title","ID"] }, "required":true, "label":"Property Name" },
+    { "name":"input1", "type":"txtInput", "required":true, "label":"Title" },
+    { "name":"input2", "type":"txtInput", "required":true, "label":"Order" },
+    { "name":"input3", "type":"tglInput", "required":true, "label":"Status" }
+  ]
+}

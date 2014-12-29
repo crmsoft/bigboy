@@ -1,0 +1,9 @@
+{
+  "heading":"Adding New Property",
+  "relatedTable":"T_Property",
+  "inputs": [
+    { "name":"input1", "type":"txtInput", "required":true, "label":"Title" },
+    { "name":"input2", "type":"txtInput", "required":true, "label":"Order" },
+    { "name":"toggle1", "type":"tglInput", "required":true, "label":"Status" }
+  ]
+}

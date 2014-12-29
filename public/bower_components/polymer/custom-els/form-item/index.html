@@ -1,0 +1,178 @@
+<link rel="import" href='../../polymer.html'>
+<link rel="import" href='../../../paper-item/paper-item.html'>
+<link rel="import" href='../../../core-transition/core-transition-css.html'>
+<link rel="import" href='../../../core-overlay/core-overlay.html'>
+<link rel="import" href='../../../paper-button/paper-button.html'>
+<link rel="import" href='../../../paper-dialog/paper-dialog.html'>
+<link rel="import" href='../../../paper-input/paper-input-decorator.html'>
+
+<link rel="import" href='../../../font-roboto/roboto.html'>
+<link rel="import" href='../../../paper-toggle-button/paper-toggle-button.html'>
+
+<link rel="import" href='../../../core-ajax/core-ajax.html'>
+
+<link rel="import" href='../../../paper-spinner/paper-spinner.html'>
+
+<polymer-element name="form-item" attributes="formIcon formTitle data formResource">
+    <template>
+        <link rel="stylesheet" href="css.css"/>
+        <div class="frm-btn-item-holder">
+            <div class="core-icon-add">
+                <core-icon icon="add"></core-icon>
+            </div>
+            <paper-item id="btn" on-tap="{{showPopUp}}">
+                <div class="nav-main-content">
+                    <div class="item-button-icon">
+                        <core-icon icon="{{formIcon}}"></core-icon>
+                    </div>
+                    <div class="frm-title">
+                        {{ formTitle }}
+                    </div>
+                </div>
+            </paper-item>
+        </div>
+        <core-overlay id="overlay"  backdrop opened="{{opened}}" autoCloseDisabled="{{autoCloseDisabled}}"  transition="core-transition-center">
+            <content>
+                <div class="content">
+                    <h3 class="heading">Dialog</h3>
+                    <hr class="hr-top" />
+                    <div class="fields">
+                        <paper-spinner class="blue" active></paper-spinner>
+                    </div>
+                    <hr class="hr-bottom"/>
+                    <paper-button class="submit-btn" on-tap="{{validateForm}}">Submit</paper-button>
+                    <paper-button class="cancel-btn" core-overlay-toggle>Cancel</paper-button>
+                </div>
+            </content>
+        </core-overlay>
+        <core-ajax id="xhr"
+                url="http://localhost/imports/wwww/big-boy/public/rest/post/forms"
+                method="post"
+                handleAs="json"
+                on-core-response="{{handleResponse}}"></core-ajax>
+    </template>
+    <script>
+        Polymer('form-item',{
+
+            ready: function() {
+            },
+
+            validateForm:function(){
+                var v_input = false, v_select = false;
+                var data_input = {}, data_select = {}, data_toggle = {};
+
+                var $d = this.$.overlay.querySelectorAll('paper-input-decorator');
+                Array.prototype.forEach.call($d, function(d) {
+
+                    var c_el = d.querySelector('input');
+                    d.isInvalid = !c_el.validity.valid;
+                    if( !d.isInvalid ){
+                        v_input = true;
+                    }
+                    data_input[ d.getAttribute( 'name' ) ] = c_el.value;
+                });
+                console.log( 'inputs ', v_input );
+                console.log( 'inputs ', data_input );
+
+                var $d = this.$.overlay.querySelectorAll('select');
+                Array.prototype.forEach.call($d, function(d) {
+                    var index = d.selectedIndex;
+                    if( index != 0 ){
+                        v_select = true;
+                    }
+                    data_select[ d.getAttribute( 'name' ) ] = d.selectedIndex;
+                });
+                console.log( 'select ', v_select );
+                console.log( 'select ', data_select );
+
+                var $d = this.$.overlay.querySelectorAll('paper-toggle-button');
+                Array.prototype.forEach.call($d, function(d) {
+                    data_toggle[ d.getAttribute( 'name' ) ] = d.checked;
+                });
+                console.log( 'toggle ', data_toggle );
+            },
+
+            handleResponse: function( a,r,u ){
+                var res = r.response;
+
+                if( !res ){ throw 'Response is empty.'; }
+
+                if( res.error ){ throw res.error; }
+
+                var h3 = this.$.overlay.querySelector('.heading');
+                if( !res.heading ){ h3.innerHTML = 'Heading!'; }else{ h3.innerHTML = res.heading; }
+
+                var fields = this.$.overlay.querySelector('.fields');
+
+                    fields.innerHTML = '';
+
+                if( res.inputs ){
+                    for( var i = 0; res.inputs.length > i; i++ ){
+
+                        if( suppoertedEls[ res.inputs[i].type ] ) {
+                            NewEl.init(suppoertedEls[res.inputs[i].type])
+                        }else{
+                            this.form_self_destroy();
+                            break;
+                        }
+
+                        if( res.inputs[i].name ){
+                            NewEl.setFieldName( res.inputs[i].name );
+                        }else{
+                            this.form_self_destroy();
+                            break;
+                        }
+
+                        if( res.inputs[i].required ) {
+                            NewEl.setRequired();
+                        }
+
+                        NewEl.setLabel( res.inputs[i].label );
+
+                        if( res.inputs[i].value ){
+                            NewEl.setDefaultVal( res.inputs[i].value );
+                        }
+
+                        fields.appendChild( NewEl.getElement() );
+                    }
+                }
+            },
+
+            form_self_destroy:function(){
+                this.$.overlay.querySelector('.fields').innerHTML = "<h3>Given JSON file is not valid</h3>";
+            },
+
+            showPopUp: function(){
+                this.$.overlay.toggle();
+
+                if( this.$.overlay.querySelector('paper-spinner') ) {
+                    this.loadPopUpForm();
+                }
+            },
+
+            loadPopUpForm:function(){
+                var ajax = this.$.xhr;
+                if( this.formResource ){
+                    ajax.params = JSON.stringify( { 'json':this.formResource } );
+                    ajax.go();
+                }else{
+                    console.log( 'Polymer custom element error. Some properties are missing' );
+                }
+            },
+
+            showError: function(){
+                this.$.dialog1.toggle();
+            }
+
+        });
+    </script>
+</polymer-element>
+
+<!-- <paper-dialog id="dialog1" heading="Choose Quiz Type" transition="paper-dialog-transition-center">
+            <content>
+                <h3>Hello World !!!</h3>
+            </content>
+            <conten>
+                <paper-button paper-dialog-toggle>Close</paper-button>
+            </conten>
+        </paper-dialog> -->

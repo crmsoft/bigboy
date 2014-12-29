@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - taksitle@localhost" uuid="fc65eb3d-e2ce-4f6f-8c93-26290cfd8759">
+    <database-info product="MySQL" version="5.5.40-0ubuntu1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="taksitle"/>
+    <table name="T_Category" schema="" catalog="taksitle" type="TABLE">
+      <column name="CategoryID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Title" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Logo" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="OrderNo" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CreateDate" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="Status" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="CategoryID"/>
+    </table>
+    <table name="T_Product" schema="" catalog="taksitle" type="TABLE">
+      <column name="ProductID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Title" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Code" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Description" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="DiscountPrice" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3"/>
+      <column name="Price" sqlType="DECIMAL" precision="18" scale="2" nullable="false" jdbcType="3"/>
+      <column name="PriceFromPrintery" sqlType="DECIMAL" precision="18" scale="2" nullable="false" jdbcType="3"/>
+      <column name="IsDiscountActive" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="DiscountRate" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="OrderNo" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ReadCount" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CreateDate" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="UpdateDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="Status" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="SubCategoryID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="ProductID"/>
+    </table>
+    <table name="T_ProductByProperty" schema="" catalog="taksitle" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="ProductID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="SubPropertyID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="OrderNo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Status" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="T_Property" schema="" catalog="taksitle" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Title" sqlType="VARCHAR" precision="250" scale="0" nullable="false" jdbcType="12"/>
+      <column name="OrderNo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Status" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="T_SubCategory" schema="" catalog="taksitle" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Title" sqlType="VARCHAR" precision="250" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CategoryID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Image" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="OrderNo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Status" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CreateDate" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="T_SubProperty" schema="" catalog="taksitle" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="PropertyID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Title" sqlType="VARCHAR" precision="250" scale="0" nullable="false" jdbcType="12"/>
+      <column name="OrderNo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Status" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="users" schema="" catalog="taksitle" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="active" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="email" sqlType="VARCHAR" precision="250" scale="0" nullable="false" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="70" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password_temp" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
+      <column name="username" sqlType="VARCHAR" precision="250" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="250" scale="0" nullable="false" jdbcType="12"/>
+      <column name="remember_token" sqlType="VARCHAR" precision="65" scale="0" nullable="false" jdbcType="12"/>
+    </table>
+  </data-source>
+</component>
