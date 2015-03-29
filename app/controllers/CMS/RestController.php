@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Created by PhpStorm.
+ * Created.
  * User: ahtem
  * Date: 12/29/14
  * Time: 2:35 PM
